@@ -117,7 +117,7 @@ body{
 }
 .ying>.logo>audio{
     display: none;
-    transform: translateY(-57px) translateX(4px);
+    transform: translateY(0px) translateX(-30px);
 }
 .ying:hover audio{
     display: block;

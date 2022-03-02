@@ -1,0 +1,125 @@
+
+@font-face {
+    font-family: 草书;
+    src: url(../font/草书_简入繁出.ttf);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "草书";
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0e1538;
+}
+
+.containex{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    transform-style: preserve-3d;
+    /* 景深 */
+    /* perspective: 900px; */
+    /* transform: rotateX(45deg) rotateY(45deg); */
+    animation: ao 20s linear infinite;
+}
+.containex .xiang{
+    width: 50%;
+    height: 50%;
+    /* 居中 */
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    opacity: 0.8;
+}
+.containex:hover .b_img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containex>.b_img>img{
+    opacity: 0;
+}
+.containex:hover .b_img>img{
+    width: 200%;
+    opacity: 0.8;
+}
+
+/* 组装立方体 */
+.containex .front{
+    transform: translateZ(75px);
+}
+.containex:hover .out-front{
+    transform: translateZ(250px);
+}
+.containex .back{
+    transform: rotateY(180deg) translateZ(75px);
+}
+.containex:hover .out-back{
+    transform: rotateY(180deg) translateZ(250px);
+}
+.containex .left{
+    transform: rotateY(-90deg) translateZ(75px);
+}
+.containex:hover .out-left{
+    transform: rotateY(-90deg) translateZ(250px);
+}
+.containex .right{
+    transform: rotateY(90deg) translateZ(75px);
+}
+.containex:hover .out-right{
+    transform: rotateY(90deg) translateZ(250px);
+}
+.containex .top{
+    transform: rotateX(90deg) translateZ(75px);
+}
+.containex:hover .out-top{
+    transform: rotateX(90deg) translateZ(250px);
+}
+.containex .bottom{
+    transform: rotateX(-90deg) translateZ(75px);
+}
+.containex:hover .out-bottom{
+    transform: rotateX(-90deg) translateZ(250px);
+}
+
+@keyframes ao {
+    0%{
+        transform:rotateX(-22.5deg) rotateY(0deg);
+    }
+    100%{
+        transform: rotateX(-22.5deg) rotateY(360deg);
+    }
+}
+
+.ying{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 60px;
+    height: 180px;
+    line-height: 60px;
+    border-radius: 50% 0%;
+    font-size: 50px;
+    text-align: center;
+    background-color: antiquewhite;
+}
+.ying>.logo{
+    transform: translateY(-180px) translateX(60px);
+    font-size: 60px;
+    color: red;
+}
+.ying>.logo>audio{
+    display: none;
+    transform: translateY(-57px) translateX(4px);
+}
+.ying:hover audio{
+    display: block;
+}
+

@@ -1,0 +1,148 @@
+
+/* 设置全局变量，以便好调用
+var(--color1)为调用 */
+:root{
+    --color1:#f4c042;
+    --color2:#7a5600;
+}
+/* 将全部元素的边距清零，同时改变盒子的设置模型 */
+*,
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    /* 设置弹性盒，并居中对齐 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 使页面占用浏览器的可视面，调用颜色 */
+    height: 100vh;
+    background-color: var(--color1);
+}
+.container{
+    /* 相对定位，设置大小 */
+    position: relative;
+    width: 300px;
+    height: 300px;
+    /* 临时设置，以便观察 */
+}
+.container .sun{
+    /* 设置绝对定位，里面的项目可以相对移动 */
+    position: absolute;
+    top: 135px;
+    /* 自动计算，并对齐 */
+    left: calc(50% - 136px / 2);
+    width: 136px;
+    height: 136px;
+    /* 设置动画 */
+    animation: sun 2.7s linear infinite;
+}
+.container .sun .sun-body{
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 6px solid var(--color2);
+    /* 设置动画 */
+    animation: sun-body 2.7s linear infinite;
+}
+.container .sun .sun-body .line{
+    position: absolute;
+    top: -24px;
+    left: calc(50% - 3px);
+    width: 6px;
+    height: 12px;
+    border-radius: 6px;
+    background-color: var(--color2);
+    /* 通过style属性来自动计算八个旋转边 */
+    transform: rotate(calc(var(--i) * 45deg));
+    /* 设置旋转中心 */
+    transform-origin: center 68px;
+}
+.container .sun .eye{
+    position: absolute;
+    top: 60px;
+    left: 40px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color2);
+    /* 通过阴影来设置眼睛的另一个 */
+    box-shadow: 16px 0 var(--color2);
+
+    /* 设置动画 */
+    animation: eye 2.7s linear infinite;
+}
+.container .horizon{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 115px;
+    background-color: var(--color1);
+}
+.container .horizon::before{
+    content: "";
+    position: absolute;
+    left: 5%;
+    width: 90%;
+    height: 6px;
+    border-radius: 6px;
+    background-color: var(--color2);
+}
+.container .horizon::after{
+    content: "Loading...";
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    color: var(--color2);
+    /* 设置动画 */
+    animation: Loading 2.7s linear infinite;
+}
+
+@keyframes sun {
+    10%{
+      transform: translate(0);  
+    }
+    40%,
+    70%{
+        transform: translateY(-40px);
+    }
+}
+@keyframes sun-body {
+    40%{
+      transform: rotate(0);  
+    }
+    50%,
+    100%{
+        transform: rotate(45deg);
+    }
+}
+@keyframes eye {
+    50%,
+    60%{
+      transform: scale(1);  
+    }
+    55%{
+        transform: scaleY(0.1);
+    }
+    70%,
+    100%{
+        transform: translateX(34px);
+    }
+}
+@keyframes Loading {
+    40%{
+      opacity: 1;
+    }
+    60%{
+        opacity: 0;
+    }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>指纹扫描</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #111;
+        }
+        .container{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container .fingerprint{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background: url(./img/fingerprint1.png);
+            background-size: 300px;
+        }
+        .container .fingerprint::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(./img/fingerprint2.png);
+            background-size: 300px;
+            animation: run 4s ease-in-out infinite; 
+        }
+        .container .fingerprint::after{
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: #3fefef;
+            border-radius: 5px;
+            filter: drop-shadow(0 0 20px #3fefef) drop-shadow(0 0 40px #3fefef);
+            animation: run_bang 4s ease-in-out infinite;  
+        }
+        @keyframes run {
+            0%,100%{
+                height: 0%;
+            }
+            50%{
+                height: 100%;
+            }
+        }
+        @keyframes run_bang {
+            0%,100%{
+                top: -20px;
+            }
+            50%{
+                top: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="fingerprint"></div>
+    </div>
+</body>
+</html>

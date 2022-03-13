@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小球随机运动</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #001f25;
+        }
+        .box{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            /* border: 2px solid red; */
+        }
+        .box span{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* 这里spanda大小为box大小，即：中心为屏幕正中心 */
+            transform: rotate(calc(36deg * var(--i)));
+            /* 通过边框可以发现旋转中心在哪里 */
+            /* border: 2px solid red; */
+        }
+        .box span::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            /* 表示透明无颜色，是background-color 的默认值 */
+            background: transparent; 
+            border: 3px solid #00efff;
+            box-sizing: border-box;
+            box-shadow: 0 0 20px #00efff,
+            -30px -30px 0px #00efff,
+            -30px -30px 20px #00efff,
+            30px 30px  0px #00efff,
+            30px 30px  20px #00efff,
+            30px -30px 0px #00efff,
+            30px -30px 20px #00efff,
+            -30px 30px 0px #00efff,
+            -30px 30px 20px #00efff;
+            animation: run 5s linear infinite;
+            /* 增加旋转的半径，默认半径为0，即：中心旋转 */
+            animation-delay: calc(-0.3s * var(--i));
+            transform-origin: 20px;
+            /* 过渡效果，即：动画变化的平均速度 */
+            transition: 2s;
+        }
+        .box:hover span::before{
+            box-shadow: 0 0 20px #00efff,
+            -200px -200px 0px #00efff,
+            -200px -200px 20px #00efff,
+            200px 200px  0px #00efff,
+            200px 200px  20px #00efff,
+            200px -200px 0px #00efff,
+            200px -200px 20px #00efff,
+            -200px 200px 0px #00efff,
+            -200px 200px 20px #00efff;
+            transform-origin: 150px;
+
+        }
+        @keyframes run {
+            0%{
+                /* 绕中心旋转，空心圆 */
+                transform: rotate(0deg);
+                /* 霓虹灯效果，角度是一种颜色向宁另一种颜色的转变 */
+                filter: hue-rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+                filter: hue-rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span style="--i:1;"></span>
+        <span style="--i:2;"></span>
+        <span style="--i:3;"></span>
+        <span style="--i:4;"></span>
+        <span style="--i:5;"></span>
+        <span style="--i:6;"></span>
+        <span style="--i:7;"></span>
+        <span style="--i:8;"></span>
+        <span style="--i:9;"></span>
+        <span style="--i:10;"></span>
+    </div>
+</body>
+</html>

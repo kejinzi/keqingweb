@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>毛玻璃的魅力</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url(./img/bg_mingshendashe.jpg);
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            overflow: hidden;
+        }
+        body .text h2,p{
+            position: absolute;
+            /* 改变字的方向，设置成竖直 */
+            writing-mode: vertical-lr;
+            font-family: '隶书';
+            color: #fff;
+            pointer-events: none;
+            text-shadow: 0 20px 20px rgba(0,0,0,0.5);
+        }
+        body .text h2{
+            top: 2%;
+            left: 2%;
+            font-size: 3rem;
+        }
+        body .text p{
+            font-size: 2rem;
+            height: calc(2rem * 11);
+            top: 10%;
+            left: 8%;
+
+        }
+
+        body .glass{
+            position: absolute;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 200px;
+            pointer-events: none;
+            background: transparent;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            backdrop-filter: blur(7px);
+            border-radius: 5%;
+        }
+    </style>
+</head>
+<body>
+    <div class="text">
+        <h2>鸣神大社</h2>
+        <p>
+            申告白辰，镇魂之由，
+            允我作祝，引灯归途，
+            畏畏神威，诚惶诚恐。
+        </p>
+    </div>
+    <div class="glass"></div>
+    <!-- js部分，用于获取.glass的位置并改变其位置 -->
+    <script>
+        document.addEventListener('mousemove', function(e){
+            const glass = document.querySelector('.glass')
+            glass.style.left = e.offsetX + 'px'
+            glass.style.top = e.offsetY + 'px'
+        })
+    </script>
+</body>
+</html>

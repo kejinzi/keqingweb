@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>唱片</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #eaeef0;
+        }
+        .box{
+            position: relative;
+            display: flex;
+        }
+        .box span{
+            position: relative;
+            width: 300px;
+            height: 300px;
+  
+            background: #eaeef0;
+            border: 4px solid #eaeef0;
+            border-radius: 50%;
+            box-shadow: -8px -8px 15px rgba(255, 255, 255, 1),
+                        8px 8px 25px rgba(0, 0, 0, .15);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box span::before{
+            content: '';
+            position: absolute;
+            inset: 0px;
+            border-radius: 50%;
+            box-shadow: inset 10px 10px 20px rgba(0, 0, 0, .5),
+            inset -5px -50px 15px rgba(255, 255, 255, 1);
+        }
+        .box span::after{
+            content: '';
+            position: absolute;
+            inset: 40px;
+            background: url(./img/爱蜜莉雅.png) ,#eaeef0;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            border-radius: 50%;
+            box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.15),
+            inset -10px -10px 15px rgba(255, 255, 255, 1);
+            animation: big 0.7s linear infinite;
+            transition: all;
+        }
+        .box span i{
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: linear-gradient(#42abff,#f53a3a,#c74ff7);
+            animation: run 3s linear infinite;
+        }
+        @keyframes big {
+            0%,100%{
+                inset: 40px;
+            }
+            50%{
+                inset: 35px;
+            }
+        }
+        @keyframes run {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span><i></i></span>
+    </div>
+</body>
+</html>
